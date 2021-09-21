@@ -1,0 +1,7 @@
+/* 数据交换 *
+void my_swap(int arr[], int a, int b)
+{
+    a = a ^ b;
+    b = b ^ a;
+    a = a ^ b;
+}
