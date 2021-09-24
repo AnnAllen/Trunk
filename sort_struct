@@ -1,7 +1,51 @@
-/* 数据交换 *
-void my_swap(int arr[], int a, int b)
+static void my_swap(int *a, int *b)
 {
-    a = a ^ b;
-    b = b ^ a;
-    a = a ^ b;
+    *a = *a ^ *b;
+    *b = *b ^ *a;
+    *a = *a ^ *b;
+}
+
+/* 从小到大 */
+static void slect_sort(int *arr, int len)
+{
+    int i, j, min;
+
+    for (i = 0; i < len; i++) {
+        min = arr[i];
+        for (j = i + 1; j < len; j++) {
+            if (arr[j] < min) {
+                my_swap(&arr[j], &arr[i]);
+            }
+        }
+    }
+}
+
+/* 从大到小 */
+static void insert_sort(int *arr, int len)
+{
+    int i, j;
+
+    for (i = 1; i < len; i++) {
+    	for (j = i; j >= 1; j--) {
+    		if (arr[j] > arr[j-1]) {
+    			my_swap(&arr[j], &arr[j-1]);
+    		} else {
+    			break;
+    		}
+    	}
+    }
+}
+
+/* 从小到大 */
+static void bub_sort(int *arr, int len)
+{
+	int i, j;
+
+	for (i = len - 1; i > 0; i--) {
+		for (j = 0; j < i; j++) {
+			if (arr[j + 1] < arr[j]) {
+				my_swap(&arr[j + 1], &arr[j]);
+			}
+		}
+	}
 }
